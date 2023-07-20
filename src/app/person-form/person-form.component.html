@@ -1,4 +1,4 @@
-<form #form="ngForm" (ngSubmit)="form.form.valid && addNewPerson()">
+<form>
 	<div class="row">
 		<div class="col-3">
 			<label for="name">Nombre</label>
@@ -8,8 +8,7 @@
 				id="name"
 				placeholder="Nombre"
 				class="form-control"
-				[(ngModel)]="nameInput"
-				required
+				#nameInputRef
 			/>
 		</div>
 		<div class="col-3">
@@ -21,11 +20,26 @@
 				placeholder="Apellido"
 				class="form-control"
 				[(ngModel)]="lastNameInput"
-				required
+			/>
+		</div>
+		<div class="col-3">
+			<label for="example">Ejemplo</label>
+			<input
+				type="text"
+				name="example"
+				id="example"
+				placeholder="Nombre"
+				class="form-control"
+				#exampleInputRef
 			/>
 		</div>
 		<div class="col">
-			<button class="btn btn-primary" type="submit">+</button>
+			<button
+				class="btn btn-primary"
+				(click)="addNewPerson(nameInputRef)"
+			>
+				Agregar Persona
+			</button>
 		</div>
 	</div>
 </form>
